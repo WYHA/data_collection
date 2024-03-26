@@ -1,15 +1,30 @@
 # 背景
 
-天文学家通常对一些天文相关的python包有使用需求，比如根据条件进行相关数据检索等等
+天文学家通常对一些天文相关的python包有使用需求，比如根据条件进行相关数据检索、数据分析、表格分析与生成、读写文件、画图等。
 
-**目标**：支持用户用语言表述的方式使用python包
+**目标**：支持用户用语言表述的方式使用python包，增强在天文python库根据任务指令生成代码的能力。
 
 **例子**
 
-任务的自然语言表述：查询在Antennae星系周围14角分钟内的相关数据
-依赖python包--simbad
-我们做的事情：根据用户的任务需求和依赖的python包信息生成python代码-->执行python代码-->返回给用户table数据如下
-![](https://cdn.nlark.com/yuque/0/2024/png/29422557/1711414686837-1d3dfb3b-8478-4143-a9c2-a9ff08acae6a.png#averageHue=%23f3f3f3&clientId=u5e323e10-fd54-4&from=paste&id=u122a4e41&originHeight=603&originWidth=1045&originalType=url&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&taskId=ud93c39f3-66fa-4fa9-a895-855e37d1821&title=)
+1. 输入用户任务指令：查询glimpse_s07星表中以给定txt文件中天体坐标为中心的2角分方形区域内的所有红外天体，txt地址在'/home/usr/object_coordinates.txt'，每一行包含一个天体坐标。
+
+2. 根据用户的任务指令和依赖的python包生成python_code：
+```python
+def canonical_solution():
+    from astroquery.ipac.irsa import Irsa
+    import astropy.units as u
+    Irsa.ROW_LIMIT = 10000
+    try:
+        with open('/home/usr/object_coordinates.txt', 'r') as file:
+            object_coordinates_list = file.readlines()
+    except:
+        return 'File not found.'
+    table = Irsa.query_region(object_coordinates_list, catalog="glimpse_s07", spatial='Box', width=2*u.arcmin).to_pandas()
+    return table
+```
+
+3. 执行python_code返回table
+![image.png](https://cdn.nlark.com/yuque/0/2024/png/29422557/1710900443535-d2185433-0352-4734-a368-7c34a97d16f0.png#averageHue=%23282828&clientId=u153c5ad7-f01b-4&from=paste&height=839&id=uf31b0723&originHeight=1258&originWidth=3155&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=278964&status=done&style=none&taskId=u01f11296-40e2-4df5-b411-db88997ea7c&title=&width=2103.3333333333335)
 
 # TODO
 
