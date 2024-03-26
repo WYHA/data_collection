@@ -1,25 +1,23 @@
 **背景**：天文学家通常对一些天文相关的python包有使用需求，比如根据条件进行相关数据检索等等
-**目标：**支持用户用语言表述的方式使用python包
+
+**目标**：支持用户用语言表述的方式使用python包
+
 **例子**
+
 任务的自然语言表述：查询在Antennae星系周围14角分钟内的相关数据
 依赖python包--simbad
 我们做的事情：根据用户的任务需求和依赖的python包信息生成python代码-->执行python代码-->返回给用户table数据如下
 ![](https://cdn.nlark.com/yuque/0/2024/png/29422557/1711414686837-1d3dfb3b-8478-4143-a9c2-a9ff08acae6a.png#averageHue=%23f3f3f3&clientId=u5e323e10-fd54-4&from=paste&id=u122a4e41&originHeight=603&originWidth=1045&originalType=url&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&taskId=ud93c39f3-66fa-4fa9-a895-855e37d1821&title=)
+
 **TODO**
 先从几个常用的天文python包入手：astropy，astroquery（如果还有别的常用python包欢迎补充）。希望收集一些任务需求来制作这个方向的数据集，数据收集需求如下：
+
 **数据收集**
 需要收集的内容：任务的自然语言表述、依赖的python包、Python code
 
 | 任务的自然语言表述 | 依赖的python包 | Python code | 添加人 |
 | --- | --- | --- | --- |
-| 用自然语言的方式描述需要astropy，astroquery等完成的任务，组织成一个明确的文本（比如数据检索任务，文本应包含所有的检索条件），如有依赖的文件，可以直接上传，点击左上角插入->文件->本地文件 | 完成任务需要的python包 | 完成任务对应的python code，可以直接将代码复制粘贴至此列。
-由于太长的python code很难用文本描述清楚，最好将python code的长度控制在100行以内。
-请将参数正确填充且可以执行成功的python code填写在canonical_solution函数里，将结果通过return进行返回。```
-def canonical_solution():
-  ...(此处省略完成任务对应的python code)
-  return data
-```
- | 请务必填写 |
+| 用自然语言的方式描述需要astropy，astroquery等完成的任务，组织成一个明确的文本（比如数据检索任务，文本应包含所有的检索条件），如有依赖的文件，可以直接上传，点击左上角插入->文件->本地文件 | 完成任务需要的python包 | 完成任务对应的python code，可以直接将代码复制粘贴至此列。由于太长的python code很难用文本描述清楚，最好将python code的长度控制在100行以内。请将参数正确填充且可以执行成功的python code填写在canonical_solution函数里，将结果通过return进行返回。```def canonical_solution():  ...(此处省略完成任务对应的python code)  return data```| 请务必填写 |
 | **例子**：查询在Antennae星系周围14角分钟内的相关数据 | **例子**：astropy | **例子**：```
 def canonical_solution():
   import astropy
