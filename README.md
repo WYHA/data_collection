@@ -28,7 +28,7 @@ def canonical_solution():
 
 # TODO
 
-先从几个常用的天文python包入手：astropy，astroquery（如果还有别的常用python包欢迎补充）。希望收集一些任务需求来制作这个方向的数据集。
+为了完成上述目标，我们希望收集一些任务需求制作评测集，先从几个常用的天文python包入手：astropy，astroquery（如果还有别的常用python包欢迎补充）。
 
 **数据收集**
 
