@@ -32,7 +32,7 @@ def canonical_solution():
 
 **数据收集**
 
-需要收集的内容：用户任务指令、依赖的python包、Python code
+需要收集的内容：用户任务指令、依赖的python包、Python code、添加人
 
 | 用户任务指令 | 依赖的python包 | Python code | 添加人 |
 | --- | --- | --- | --- |
