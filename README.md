@@ -32,9 +32,9 @@ def canonical_solution():
 
 **数据收集**
 
-需要收集的内容：任务的自然语言表述、依赖的python包、Python code
+需要收集的内容：用户任务指令、依赖的python包、Python code
 
-| 任务的自然语言表述 | 依赖的python包 | Python code | 添加人 |
+| 用户任务指令 | 依赖的python包 | Python code | 添加人 |
 | --- | --- | --- | --- |
 | 用自然语言的方式描述需要astropy，astroquery等完成的任务，组织成一个明确的文本（比如数据检索任务，文本应包含所有的检索条件），如有依赖的文件，可以上传至 input_data 下，并在此列记录上传文件地址 | 完成任务需要的python包 | 完成任务对应的python code，可以直接将代码作为文本进行读取，将读取的文本内容复制粘贴至此列。由于太长的python code很难用文本描述清楚，最好将python code的长度控制在100行以内。请将参数正确填充且可以执行成功的python code填写在canonical_solution函数里，将结果通过return进行返回。<br>"def canonical_solution():\n  ...(此处省略完成任务对应的python code)\n  return data"| 请务必填写 |
 | **例子**：查询在Antennae星系周围14角分钟内的相关数据 | **例子**：astropy | **例子**："def canonical_solution():\n  import astropy\n  ...(此处省略)\n  return data\n" | 王雨菡 |
