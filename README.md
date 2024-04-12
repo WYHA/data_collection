@@ -26,18 +26,20 @@ def canonical_solution():
 3. 执行python_code返回table
 ![image.png](https://cdn.nlark.com/yuque/0/2024/png/29422557/1710900443535-d2185433-0352-4734-a368-7c34a97d16f0.png#averageHue=%23282828&clientId=u153c5ad7-f01b-4&from=paste&height=839&id=uf31b0723&originHeight=1258&originWidth=3155&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=278964&status=done&style=none&taskId=u01f11296-40e2-4df5-b411-db88997ea7c&title=&width=2103.3333333333335)
 
-# TODO
+# 数据收集需求
 
-我们希望收集一些任务需求制作上述任务的评测集，先从几个常用的天文python包入手：astropy，astroquery（如果还有别的常用python包欢迎补充）。
+我们希望收集一些任务需求制作上述任务的评测集，先从几个常用的天文python包入手：astropy，astroquery（如果还有别的常用python包欢迎补充）。需要收集的内容包括用户任务指令、依赖的python包、Python code、需求来源。
 
-**数据收集**
+用户任务指令：用自然语言的方式描述需要astropy，astroquery等完成的任务，组织成一个明确的文本（比如数据检索任务，文本应包含所有的检索条件），如有依赖的文件，可以上传至 input_data 下，并记录上传文件地址
 
-需要收集的内容：用户任务指令、依赖的python包、Python code、需求来源
+依赖的python包：完成任务需要的python包
+
+python code：用来完成用户任务的python code。由于太长的python code很难用文本描述清楚，最好将python code的长度控制在100行以内。请将可以执行成功的python code填写在canonical_solution函数里，结果通过return返回。<br>"def canonical_solution():\n  ...(此处省略完成任务对应的python code)\n  return data"，直接将代码作为文本进行读取，将读取的文本内容复制粘贴至此列。
+
+需求来源：添加数据的人员、需求来源链接等，请务必填写
 
 | 用户任务指令 | 依赖的python包 | Python code | 需求来源 |
 | --- | --- | --- | --- |
-| 用自然语言的方式描述需要astropy，astroquery等完成的任务，组织成一个明确的文本（比如数据检索任务，文本应包含所有的检索条件），如有依赖的文件，可以上传至 input_data 下，并在此列记录上传文件地址 | 完成任务需要的python包 | 完成任务对应的python code，可以直接将代码作为文本进行读取，将读取的文本内容复制粘贴至此列。（由于太长的python code很难用文本描述清楚，最好将python code的长度控制在100行以内）<br>请将可以执行成功的python code填写在canonical_solution函数里，结果通过return返回。<br>"def canonical_solution():\n  ...(此处省略完成任务对应的python code)\n  return data"| 添加该条数据的人员、需求来源链接等，请务必填写 |
-| **例子**：查询在Antennae星系周围14角分钟内的相关数据 | **例子**：astropy | **例子**："def canonical_solution():\n  import astropy\n  ...(此处省略)\n  return data\n" | 王雨菡 |
 | 查询glimpse红外巡天星表中以给定txt文件中天体坐标为中心的2角分方形区域内的所有红外天体，txt地址在'/home/usr/object_coordinates.txt'，每一行包含一个天体坐标<br>**依赖文件上传至**：input_data/object_coordinates.txt | astropy、astroquery |"def canonical_solution():\n  from astroquery.ipac.irsa import Irsa\n  import astropy.units as u\n  Irsa.ROW_LIMIT = 10000\n  try:\n    with open('/home/usr/object_coordinates.txt', 'r') as file:\n      object_coordinates_list = file.readlines()\n  except:\n      return 'File not found.'\n  table = Irsa.query_region(object_coordinates_list, catalog='glimpse_s07', spatial='Box', width=2*u.arcmin).to_pandas()\n  return table\n"| 张天惟 |
 | 查询glimpse红外巡天星表中以13:16:43.64 -62:58:31.39坐标为中心的2角分方形区域内的所有红外天体 | astroquery | "def canonical_solution():\n  from astroquery.ipac.irsa import Irsa\n  import astropy.units as u\n  Irsa.ROW_LIMIT = 10000\n  table = Irsa.query_region("13:16:43.64 -62:58:31.39", catalog="glimpse_s07", spatial='Box', width=2*u.arcmin).to_pandas()\n  return table\n" | 张天惟 |
 | 将赤道坐标10.625，41.2转换为银道坐标 | astropy | "def canonical_solution():\n  from astropy import units as u\n  from astropy.coordinates import SkyCoord\n  c = SkyCoord(ra=10.625*u.degree, dec=41.2*u.degree, frame='icrs')\n  return c.galactic\n"| 张天惟<br>[https://docs.astropy.org/en/stable/coordinates/](https://docs.astropy.org/en/stable/coordinates/) |
