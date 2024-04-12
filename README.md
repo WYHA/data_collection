@@ -36,7 +36,7 @@ def canonical_solution():
 
 * python code：用来完成用户任务的python code。由于太长的python code很难用文本描述清楚，最好将python code的长度控制在100行以内。请将可以执行成功的python code填写在canonical_solution函数里，结果通过return返回。<br>"def canonical_solution():\n  ...(此处省略完成任务对应的python code)\n  return data"，直接将代码作为文本进行读取，将读取的文本内容复制粘贴至此列。
 
-* 需求来源：添加数据的人员、需求来源链接等，请务必填写
+* 需求来源：添加数据的人员、来源链接等，请务必填写
 
 | 用户任务指令 | 依赖的python包 | Python code | 需求来源 |
 | --- | --- | --- | --- |
