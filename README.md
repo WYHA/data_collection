@@ -28,15 +28,15 @@ def canonical_solution():
 
 # 数据收集需求
 
-我们希望收集一些任务需求制作上述任务的评测集，先从几个常用的天文python包入手：astropy，astroquery（如果还有别的常用python包欢迎补充）。需要收集的内容包括用户任务指令、依赖的python包、Python code、需求来源。
+我们希望收集一些任务需求制作上述任务的评测集，先从几个常用的天文python包入手：astropy，astroquery（如果还有别的常用python包欢迎补充）。需要收集的内容包括：**用户任务指令、依赖的python包、Python code、需求来源**。
 
-用户任务指令：用自然语言的方式描述需要astropy，astroquery等完成的任务，组织成一个明确的文本（比如数据检索任务，文本应包含所有的检索条件），如有依赖的文件，可以上传至 input_data 下，并记录上传文件地址
+* 用户任务指令：用自然语言的方式描述需要astropy，astroquery等完成的任务，组织成一个明确的文本（比如数据检索任务，文本应包含所有的检索条件），如有依赖的文件，可以上传至 input_data 下，并记录上传文件地址
 
-依赖的python包：完成任务需要的python包
+* 依赖的python包：完成任务需要的python包
 
-python code：用来完成用户任务的python code。由于太长的python code很难用文本描述清楚，最好将python code的长度控制在100行以内。请将可以执行成功的python code填写在canonical_solution函数里，结果通过return返回。<br>"def canonical_solution():\n  ...(此处省略完成任务对应的python code)\n  return data"，直接将代码作为文本进行读取，将读取的文本内容复制粘贴至此列。
+* python code：用来完成用户任务的python code。由于太长的python code很难用文本描述清楚，最好将python code的长度控制在100行以内。请将可以执行成功的python code填写在canonical_solution函数里，结果通过return返回。<br>"def canonical_solution():\n  ...(此处省略完成任务对应的python code)\n  return data"，直接将代码作为文本进行读取，将读取的文本内容复制粘贴至此列。
 
-需求来源：添加数据的人员、需求来源链接等，请务必填写
+* 需求来源：添加数据的人员、需求来源链接等，请务必填写
 
 | 用户任务指令 | 依赖的python包 | Python code | 需求来源 |
 | --- | --- | --- | --- |
